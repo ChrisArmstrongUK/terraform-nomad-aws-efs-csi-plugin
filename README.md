@@ -1,3 +1,5 @@
+![Terraform Validate](https://github.com/KristophUK/terraform-nomad-aws-efs-csi-plugin/workflows/Terraform%20Validate/badge.svg?branch=master)
+
 # terraform-nomad-aws-efs-csi-plugin
 
 This module deploys the AWS EFS driver into Nomad to allow job allocations to use AWS EFS volumes.
