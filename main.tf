@@ -14,7 +14,7 @@ locals {
   plugin_nodes_jobspec_rendered = templatefile("${path.module}/templates/csi-plugin-nodes.nomad.hcl.tpl", local.plugin_nodes_jobspec_variables)
 }
 
-resource "nomad_job" "plugin-csi-nodes" {
+resource "nomad_job" "aws_efs_csi_plugin_nodes" {
   jobspec                 = local.plugin_nodes_jobspec_rendered
   deregister_on_destroy   = var.deregister_on_destroy
   deregister_on_id_change = var.deregister_on_id_change

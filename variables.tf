@@ -6,7 +6,7 @@ variable "nomad_region" {
 
 variable "nomad_datacenters" {
   type        = list(string)
-  default     = ["dc1", "dc2"]
+  default     = ["dc1"]
   description = "The Nomad datacenters to run the plugin nodes in"
 }
 
