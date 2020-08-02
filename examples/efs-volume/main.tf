@@ -1,3 +1,8 @@
+provider "nomad" {
+  address = "http://NOMAD_ADDR:4646"
+  region  = "global"
+}
+
 resource "aws_efs_file_system" "nomad" {}
 
 module "aws_efs_csi_plugin" {
