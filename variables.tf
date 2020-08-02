@@ -19,7 +19,7 @@ variable "plugin_id" {
 variable "plugin_csi_mount_dir" {
   type        = string
   default     = "/csi"
-  description = "The CSI mount directroy the Nomad agents"
+  description = "The CSI mount directory the Nomad agents"
 }
 
 variable "plugin_nodes_job_name_override" {
