@@ -1,5 +1,5 @@
 locals {
-  plugin_nodes_job_name = var.plugin_nodes_job_name_override != null ? var.plugin_nodes_job_name_override : "plugin-csi-nodes-${var.plugin_id}"
+  plugin_nodes_job_name = var.plugin_nodes_job_name_override != "" ? var.plugin_nodes_job_name_override : "plugin-csi-nodes-${var.plugin_id}"
   plugin_nodes_jobspec_variables = {
     job_name             = local.plugin_nodes_job_name
     region               = var.nomad_region

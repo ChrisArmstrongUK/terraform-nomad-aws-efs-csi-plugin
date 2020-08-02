@@ -24,7 +24,7 @@ variable "plugin_csi_mount_dir" {
 
 variable "plugin_nodes_job_name_override" {
   type        = string
-  default     = null
+  default     = ""
   description = "The job name for the plugin's nodes job. If not specified this will default to plugin-csi-nodes-[csi_plugin_id]"
 }
 
