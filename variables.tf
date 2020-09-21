@@ -22,28 +22,28 @@ variable "plugin_csi_mount_dir" {
   description = "The CSI mount directory of the Nomad agents"
 }
 
-variable "plugin_nodes_job_name_override" {
+variable "plugin_driver_image_version" {
   type        = string
-  default     = ""
-  description = "The job name for the plugin's nodes job. If not specified this will default to plugin-csi-nodes-[csi_plugin_id]"
+  default     = "v1.0.0"
+  description = "The image version of the AWS EFS CSI driver (https://github.com/kubernetes-sigs/aws-efs-csi-driver/packages/30694)"
 }
 
-variable "plugin_nodes_job_cpu" {
+variable "plugin_node_job_name_override" {
+  type        = string
+  default     = ""
+  description = "The job name for the plugin's nodes job. If not specified this will default to csi-plugin-node-[csi_plugin_id]"
+}
+
+variable "plugin_node_job_cpu" {
   type        = number
   default     = 100
   description = "The CPU allocated to the plugin nodes task"
 }
 
-variable "plugin_nodes_job_memory" {
+variable "plugin_node_job_memory" {
   type        = number
   default     = 126
   description = "The memory allocated to the plugin nodes task"
-}
-
-variable "plugin_nodes_job_image_version" {
-  type        = string
-  default     = "v1.0.0"
-  description = "The image version of the AWS EFS CSI driver (https://github.com/kubernetes-sigs/aws-efs-csi-driver/packages/30694)"
 }
 
 variable "deregister_on_destroy" {

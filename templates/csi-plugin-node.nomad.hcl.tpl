@@ -8,7 +8,7 @@ job "${job_name}" {
   type = "system"
 
   group "nodes" {
-    task "plugin" {
+    task "csi_plugin_driver" {
       driver = "docker"
 
       config {

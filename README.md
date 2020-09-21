@@ -19,6 +19,22 @@ I believe currently this plugin leverages ec2 metadata to function, so can only 
 
 ## Deploying the plugin to Nomad
 
+### Privileged Containers
+
+The nomad agents and docker daemon must be configured to allow privileged containers. Make sure you understand what this means before proceeding and check the docker image being run as part of this job.
+
+nomad config snippet...
+```HCL
+client {
+    enabled = true
+    options {
+        "docker.privileged.enabled" = "true"
+    }
+}
+```
+
+### Deployment the CSI Plugin
+
 See provision instructions on the [Terraform Registry page](https://registry.terraform.io/modules/KristophUK/aws-efs-csi-plugin/nomad/)
 
 ## Registering an EFS Volume

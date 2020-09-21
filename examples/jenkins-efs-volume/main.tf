@@ -11,6 +11,38 @@ locals {
 
 resource "aws_efs_file_system" "nomad" {}
 
+resource "aws_efs_mount_target" "nomad_efs" {
+  for_each       = var.subnet_ids
+  file_system_id = aws_efs_file_system.nomad.id
+  subnet_id      = each.value
+  security_group = [ aws_security_group.efs ]
+}
+
+resource "aws_security_group" "efs" {
+  name        = "allow_nfs"
+  description = "Allow NFS inbound traffic"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
 module "aws_efs_csi_plugin" {
   source  = "KristophUK/aws-efs-csi-plugin/nomad"
   version = "0.1.1"
